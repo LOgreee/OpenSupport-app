@@ -1,0 +1,39 @@
+.dashboard_footer{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 2em;
+    padding: 1em 0;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    font-size: 0.8em;
+    -webkit-user-select: none;
+    user-select: none;
+}
+    .dashboard_footer p{
+        opacity: 0.5;
+    }
+        .dashboard_footer a{
+            text-decoration: underline;
+        }
+        .dashboard_footer a:hover{
+            text-decoration: none;
+        }
+
+    .dashboard_footer div{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .dashboard_footer a img{
+        filter: invert(100%);
+        opacity: 0.3;
+        animation: 0.2s ease-in-out
+    }
+        .dashboard_footer a:hover img{
+            opacity: 0.5;
+        }

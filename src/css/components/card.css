@@ -1,0 +1,264 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    margin-bottom: 1.5em;
+    border: solid 1px rgba(0,0,0,0.05);
+    border-radius: 1em;
+    background-color: var(--white-color);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+    transition: 0.2s ease-in-out;
+    overflow-x: hidden;
+}
+    .card header{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 0.25em;
+        margin-bottom: 1em;
+    }
+        .card header h2{
+            font-size: 1.25em;
+            font-weight: 800;
+        }
+        .card header p{
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+        .card header.action{
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1em;
+        }
+            .card header.action a.btn{
+                font-size: 0.8em !important;
+            }
+
+    .grid-cols-1 .card,
+    .grid-cols-2 .card,
+    .grid-cols-3 .card,
+    .grid-cols-4 .card{
+        margin-bottom: 0 !important;
+    }
+
+/* Help */
+.card.help{
+    margin-bottom: 24px; 
+    border-left: 0.5em solid var(--tertiary-bg-color);
+    -webkit-user-select: none;
+    user-select: none;
+}
+    .card.help>p{
+        margin-bottom: 16px; 
+        opacity: 0.75;
+    }
+    .card.help .step{
+        padding: 14px; 
+        background: #f8fafc; 
+        border-radius: 8px; 
+        border: 1px solid #e2e8f0;
+    }
+        .card.help .step strong{
+            display: block; 
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .card.help .step p{
+            font-size: 0.88rem; 
+            color: #475569; 
+            margin: 0;
+        }
+
+/* Links */
+.card div.links{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+    .card div.links *{
+        padding: 1em 0;
+        font-size: 0.8em;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: solid 1px rgba(0,0,0,0.2);
+    }
+        .card div.links *.red{
+            color: #F45050;
+        }
+        .card div.links *:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .card div.links *:last-child{
+            border-bottom: none;
+        }
+
+/* Table */
+.card.table{
+    padding: 0;
+}
+    .card.table header{
+        padding: 2em 2em 0 2em;
+        margin-bottom: 1em;
+    }
+        .card.table header h2{
+            font-size: 1.25em;
+            font-weight: 800;
+        }
+    .card.table>a{
+        width: 100%;
+        padding: 1em;
+        color: var(--tertiary-bg-color);
+        text-align: center;
+        text-decoration: none;
+        font-size: 0.8em;
+        font-weight: 800;
+        transition: filter ease-in-out 0.2s
+    }
+        .card.table>a:hover{
+            filter: brightness(1.2);
+        }
+
+/* Team members */
+.card.member header, .member_card{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+    .card.member header>div:first-of-type, .member_card>div:first-of-type{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        width: 75%;
+    }
+    .member_card>div{
+        width: 70%;
+    }
+        .card.member header div .user_icon, .member_card div .user_icon, .user_icon{
+            min-width: 1.25em;
+            width: 1.25em;
+            height: 1.25em;
+            padding: 1em;
+            border-radius: 50%;
+            color: var(--tertiary-bg-color);
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.4em;
+            line-height: 1.4em;
+            font-weight: 800;
+            background-color: rgba(79, 70, 229, 0.1);
+            box-sizing: content-box;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+            .member_card div .user_icon{
+                min-width: 1em;
+                width: 1em;
+                height: 1em;
+                padding: 0.75em;
+                font-size: 1em;
+                line-height: 1em;
+            }
+        .card.member header div div, .member_card div div{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-items: stretch;
+            margin-left: 1em;
+        }
+            .card.member header div div h3, .member_card div div h3{
+                font-size: 1.2em;
+                font-weight: 800;
+            }
+            .card.member header div div p, .member_card div div p{
+                font-size: 0.8em;
+            }
+        .card.member header div.tags, .member_card div.tags{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-items: flex-end;
+            gap: 0.25em;
+            width: auto !important;
+        }
+    .card.member>div.details{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        margin-bottom: 1em;
+    }
+        .card.member>div.details *{
+            font-size: 0.9em;
+            line-height: 1.5em;
+        }
+        .card.member>div strong{
+            font-weight: 700;
+        }
+    .card.member footer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1em;
+        opacity: 1;
+    }
+        .card.member footer p{
+            font-style: italic;
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+        .card.member footer div.actions{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+        .card.member footer div.actions a{
+            color: var(--tertiary-bg-color);
+            font-size: 0.8em !important;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0 0.5em 0 0 !important;
+            margin: 0 0.5em 0 0 !important;
+            border-right: solid 1px rgba(0,0,0,0.5);
+            border-radius: 0 !important;
+            background-color: transparent !important;
+            cursor: pointer;
+        }
+            .card.member footer div a:hover{
+                text-decoration: underline;
+            }
+            .card.member footer div a:last-of-type{
+                padding-right: 0;
+                margin-right: 0;
+                border-right: none;
+            }
+
+
+/* Statistics Recap */
+.card.statistics_recap{
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    .card.statistics_recap h2{
+        font-size: 0.8em;
+        font-weight: 600;
+        color: rgba(0,0,0,0.5);
+    }
+    .card.statistics_recap p{
+        font-size: 2em;
+        font-weight: 800;
+    }
+
+/* Charts */
+.card div.charts-wrapper{
+    height: 20em;
+}

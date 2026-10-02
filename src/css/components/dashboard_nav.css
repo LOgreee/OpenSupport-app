@@ -1,0 +1,309 @@
+/* Dashboard */
+.dashboard_nav{
+    width: 5em;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-text-color) !important;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: width 0.2s ease-in-out;
+}
+
+    .dashboard_nav.full{
+        width: 22em;
+    }
+
+/* Separator */
+.dashboard_nav hr{
+    background-color: rgba(255,255,255,1) !important;
+}
+
+/* OpenSupport Logo */
+.dashboard_nav .osupport_logo{
+    width: 100%;
+    height: 3em;
+    margin-top: 1em;
+    padding: 1em;
+    background-image: url(../../opensupport_assets/opensupport_icon_white.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+    .dashboard_nav.full .osupport_logo{
+        height: 3em;
+        background-image: url(../../opensupport_assets/opensupport_logo_white.svg);
+        background-position: 1.75em center;
+        background-size: 15em;
+    }
+
+/* Links */
+.dashboard_nav nav{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    padding: 1em;
+}
+
+    .dashboard_nav nav a, .dashboard_nav a.closePannel{
+        height: 3em;
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding: 0.75em;
+        margin-bottom: 0.5em;
+        border-radius: 0.5em;
+        color: var(--secondary-text-color) !important;
+        text-decoration: none;
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+        .dashboard_nav nav a.selected{
+            background-color: var(--tertiary-bg-color);
+            font-weight: 600;
+        }
+        .dashboard_nav nav a:hover, .dashboard_nav a.closePannel:hover{
+            background-color: var(--secondary-bg-color);
+            filter: brightness(150%);
+        }
+
+    .dashboard_nav nav a img, .dashboard_nav a.closePannel img{
+        width: 1.5em;
+        height: 1.5em;
+        margin-right: 0.75em;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .dashboard_nav nav a span, .dashboard_nav a.closePannel span{
+        display: none;
+    }
+        .dashboard_nav.full nav a span, .dashboard_nav.full a.closePannel span{
+            display: block;
+            animation: 0.2s ease-in 1 fadein;
+        }
+
+    .dashboard_nav nav hr{
+        margin: 0 0 0.5em 0;
+        opacity: 0.1;
+    }
+
+/* Close Pannel */
+.dashboard_nav a.closePannel{
+    margin: 0 1em 1em 1em;
+}
+    .dashboard_nav a.closePannel img{
+        transform: scaleX(-1);
+    }
+    .dashboard_nav.full a.closePannel img{
+        transform: scaleX(1);
+    }
+    .dashboard_nav a.closePannel span{
+        opacity: 0.5;
+    }
+
+/* Teams */
+.dashboard_nav select.teams{
+    padding: 1em;
+    border-top: solid 1px rgba(250,250,250,0.2);
+    background-color: var(--secondary-bg-color) !important;
+    color: var(--secondary-text-color);
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+/* User */
+.dashboard_nav .user{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1em;
+    border-top: solid 1px rgba(250,250,250,0.2);
+}
+    .dashboard_nav .user .account_btn{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        text-decoration: none;
+    }
+    .dashboard_nav .user .account_btn p.user_icon{
+        min-width: 2em !important;
+        width: 2em;
+        height: 2em;
+        padding: 0.2em !important;
+        font-size: 1.5em;
+        line-height: 1.5em;
+        box-sizing: border-box;
+        background-color: #e7e8f9 !important;
+    }
+    .dashboard_nav .user .account_btn div, .dashboard_nav .user a.logout_btn{
+        display: none;
+        width: 0;
+        margin-left: 0;
+        opacity: 0;
+        transition: 0.2s ease-in-out;
+    }
+    .dashboard_nav.full .user .account_btn div, .dashboard_nav.full .user a.logout_btn{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        justify-content: center;
+        margin-left: 0.5em;
+        opacity: 1;
+        color: var(--secondary-text-color) !important;
+    }
+        .dashboard_nav.full .user .account_btn div{
+            width: 100%;
+            max-width: 70%;
+        }
+        .dashboard_nav .user .account_btn div h2{
+            font-weight: 600;
+            font-size: 1em;
+            max-width: 100%;
+            max-height: 1.2em;
+            margin-bottom: 0.2em;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .dashboard_nav .user .account_btn div p{
+            font-size: 0.6em;
+            max-width: 100%;
+            max-height: 1em;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            opacity: 0.5;
+        }
+
+    .dashboard_nav .user a.logout_btn{
+        width: 2.5em;
+        height: 2.5em;
+        aspect-ratio: 1/1;
+        padding: 0.25em;
+        border-radius: 0.5em;
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+    }
+        .dashboard_nav .user a.logout_btn img{
+            object-fit: contain;
+            object-position: center;
+            height: 100%;
+        }
+        .dashboard_nav .user a.logout_btn:hover{
+            background-color: var(--secondary-bg-color);
+            filter: brightness(150%);
+        }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .dashboard_nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 9999;
+        background-color: var(--secondary-bg-color);
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(-100%);
+        overflow: visible;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                    visibility 0.35s;
+    }
+    .dashboard_nav.full {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+    .dashboard_nav a.closePannel {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 1.5em;
+        left: calc(100vw + 1.5em);
+        right: auto;
+        width: 3em !important;
+        height: 3em !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: var(--secondary-bg-color) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 0.6rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        z-index: 10000;
+        cursor: pointer;
+        pointer-events: auto;
+        visibility: visible !important;
+        transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                    background-color 0.2s ease-in-out,
+                    border-color 0.2s ease-in-out;
+    }
+    .dashboard_nav a.closePannel img {
+        width: 1.6rem !important;
+        height: 1.6rem !important;
+        margin: 0 !important;
+        transform: rotate(180deg);
+        display: block !important;
+        filter: brightness(200%);
+        transition: transform 0.35s ease-in-out;
+    }
+    .dashboard_nav a.closePannel span {
+        display: none !important;
+    }
+    .dashboard_nav.full a.closePannel {
+        left: calc(100vw - 4.5em);
+    }
+    .dashboard_nav.full a.closePannel img {
+        transform: rotate(0deg);
+    }
+    .dashboard_nav .osupport_logo {
+        background-image: url(../../opensupport_assets/opensupport_logo_white.svg);
+        background-position: 1.6em center;
+        background-size: 14em;
+        background-repeat: no-repeat;
+        height: calc(3.5em + 3em);
+        margin: 0;
+        padding: 3em;
+        flex-shrink: 0;
+    }
+    .dashboard_nav nav {
+        padding: 1em 1.5em;
+        flex: 1;
+    }
+    .dashboard_nav nav a {
+        height: 3.5em;
+        margin-bottom: 0.75em;
+    }
+    .dashboard_nav nav a span {
+        display: inline-block !important;
+        font-size: 1.1em;
+    }
+    .dashboard_nav select.teams {
+        display: block;
+        width: 100%;
+    }
+    .dashboard_nav .user {
+        display: flex;
+    }
+    .dashboard_nav .user .account_btn div,
+    .dashboard_nav .user a.logout_btn {
+        display: flex !important;
+        opacity: 1 !important;
+    }
+}

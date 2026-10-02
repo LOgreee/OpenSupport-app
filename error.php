@@ -1,0 +1,85 @@
+<?php require("config.php");
+header_remove("X-Frame-Options");
+header("Content-Security-Policy: frame-ancestors *");
+
+// Language manager
+$translations = [
+    'fr' => [
+        'error403' => 'Vous n\'avez pas accès à cette page.',
+        'error404' => 'La page que vous cherchez n\'existe pas.',
+        'error500' => 'Une erreur est survenue sur nos serveurs.',
+        'error502' => 'Une erreur est survenue sur nos serveurs.',
+        'error503' => 'Nos serveurs sont indisponnible pour le moment.',
+        'error' => 'Une erreur est survenue.',
+        'back' => 'Retour',
+    ],
+    'en' => [
+        'error403' => 'You do not have access to this page.',
+        'error404' => 'The page you are looking for does not exist.',
+        'error500' => 'An error occurred on our servers.',
+        'error502' => 'An error occurred on our servers.',
+        'error503' => 'Our servers are currently unavailable.',
+        'error' => 'An error occurred.',
+        'back' => 'Return',
+    ],
+    'es' => [
+        'error403' => 'No tienes acceso a esta página.',
+        'error404' => 'La página que buscas no existe.',
+        'error500' => 'Se produjo un error en nuestros servidores.',
+        'error502' => 'Se produjo un error en nuestros servidores.',
+        'error503' => 'Nuestros servidores no están disponibles en este momento.',
+        'error' => 'Se produjo un error.',
+        'back' => 'Volver',
+    ]
+];
+$t = $translations[$lang];
+
+if($_GET['code']=="403"){
+    $code = "ERROR 403";
+    $message = $t['error403'];
+} elseif($_GET['code']=="404"){
+    $code = "ERROR 404";
+    $message = $t['error404'];
+} elseif($_GET['code']=="500"){
+    $code = "ERROR 500";
+    $message = $t['error500'];
+} elseif($_GET['code']=="502"){
+    $code = "ERROR 502";
+    $message = $t['error502'];
+} elseif($_GET['code']=="503"){
+    $code = "ERROR 503";
+    $message = $t['error503'];
+} else {
+    $code = "ERROR";
+    $message = $t['error'];
+}
+?>
+<!DOCTYPE html>
+<html lang="<?= htmlspecialchars($lang) ?>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenSupport</title>
+    <link rel="icon" type="image/x-icon" href="<?= $opensupport_link?>/src/opensupport_assets/opensupport_icon.svg">
+    <link rel="stylesheet" href="<?= $opensupport_link?>/src/css/main.css">
+</head>
+<body class="dashboard">
+
+    <?php if(isset($_SESSION['connected']) && $_SESSION['connected']==="true"){
+        include("src/php/dashboard_nav.php");
+    }?>
+    
+    <main>
+        <div class="error_page">
+            <div>
+                <h1><?= $code ?></h1>
+                <p><?= $message ?></p>
+                <a href="#" onclick="history.back()" class="btn"><?= $t['back'] ?></a>
+            </div>
+            <a href="<?= $opensupport_link?>"><img src="<?= $opensupport_link?>/src/opensupport_assets/opensupport_logo.svg" alt="Logo OpenSupport"></a>
+        </div>
+    </main>
+    
+    <script src="<?= $opensupport_link?>/src/js/main.js"></script>
+</body>
+</html>
