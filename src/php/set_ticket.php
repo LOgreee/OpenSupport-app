@@ -90,20 +90,21 @@ try {
         $rating_link = $opensupport_link."/form/". $ticket['teams_form_url'] ."/ticket/" . urlencode($ticket['tickets_token']);
         $client_name = trim($ticket['tickets_first_name'] . ' ' . $ticket['tickets_last_name']);
         $to = $ticket['tickets_email'];
-        $subject = $t_mail['mail_subject'] . ($ticket['tickets_subject'] ?? '');
-        $headers = "From: {$ticket['teams_name']} <no-reply@{$opensupport_domain}>\r\n" .
-                   "Reply-To: no-reply@{$opensupport_domain}\r\n" .
-                   "Content-Type: text/html; charset=UTF-8\r\n";
+        $mail_subject = $t_mail['mail_subject'] . ($ticket['tickets_subject'] ?? '');
 
-        $message = "
-            <p>" . $t_mail['mail_hello'] . htmlspecialchars($client_name) . ",</p>
+        $mail_body = "<p>" . $t_mail['mail_hello'] . htmlspecialchars($client_name) . ",</p>
             <p>" . sprintf($t_mail['mail_resolved'], htmlspecialchars($ticket['tickets_subject'])) . "</p>
             <p>" . $t_mail['mail_feedback'] . "</p>
             <p><a href='" . htmlspecialchars($rating_link) . "' style='padding: 10px 15px; background: #007bff; color: #fff; text-decoration: none; border-radius: 4px; display: inline-block;'>" . $t_mail['mail_btn'] . "</a></p>
-            <p>" . $t_mail['mail_regards'] . "<br>" . sprintf($t_mail['mail_team'], $ticket['teams_name']) ."</p>
-        ";
-        @mail($to, $subject, $message, $headers);
-
+            <p>" . $t_mail['mail_regards'] . "<br>" . sprintf($t_mail['mail_team'], $ticket['teams_name']) ."</p>";
+        $mail_html = renderEmailLayout([
+            'team' => $ticket['teams_name'],
+            'recipient_email' => $to,
+            'body_content' => $mail_body,
+            'privacy_token' => $ticket['tickets_token'],
+            'subject' => $mail_subject
+        ]);
+        sendOpenSupportMail($to, $mail_subject, $mail_html, $ticket['teams_name']);
         echo json_encode(['success' => true]);
         exit;
     }
